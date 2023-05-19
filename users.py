@@ -28,6 +28,8 @@ class User:
             return 1  #print("user name already exists!")
         if cls.validate_password(pass_word) == False: 
             return 2  #print("password is too short")
+        if cls.validate_username(user_name) == False: 
+            return 3  #print("username cant be empty")
         encoded_pass = cls.pass_builder(pass_word)   
         new_user = cls(user_name, encoded_pass, phone_num)
         cls.users[new_user.username] = new_user   
@@ -44,6 +46,18 @@ class User:
         if len(pass_word) >= 4:
             return True
         return False
+    
+    @staticmethod    
+    def validate_username(user_name:str):
+        """
+            checks if the given password's 
+            length is greater than four characters
+            and return True otherwise False
+        """
+        if len(user_name) > 0:
+            return True
+        return False
+    
         
             
     def log_in(self, user_name:str, pass_word:str):
@@ -65,6 +79,8 @@ class User:
         replaces users old username and phone numbers
         with new ones.
         """
+        if self.validate_username(new_user_name) == False:
+            return 0
         
         user = self.users[old_user]
         user.username = new_user_name
