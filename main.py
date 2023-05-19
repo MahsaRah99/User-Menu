@@ -1,7 +1,7 @@
 from users import User
 from getpass import getpass
 
-def check_pass(entered,confirmed):
+def check_pass(entered:str,confirmed:str) -> bool:
     """
     gets two passwords and returns True if 
     they match and False otherwise.

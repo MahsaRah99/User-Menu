@@ -19,7 +19,7 @@ class User:
      
       
     @classmethod  
-    def create_user(cls, user_name:str, pass_word: str, phone_num:str):
+    def create_user(cls, user_name:str, pass_word: str, phone_num:str)-> int|None:
         """
           creates a User instance using username, phone number 
            and encoded form of password of a user   
@@ -37,7 +37,7 @@ class User:
         
      
     @staticmethod    
-    def validate_password(pass_word:str):
+    def validate_password(pass_word:str)->bool:
         """
             checks if the given password's 
             length is greater than four characters
@@ -48,7 +48,7 @@ class User:
         return False
     
     @staticmethod    
-    def validate_username(user_name:str):
+    def validate_username(user_name:str)-> bool:
         """
             checks if the given password's 
             length is greater than four characters
@@ -60,7 +60,7 @@ class User:
     
         
             
-    def log_in(self, user_name:str, pass_word:str):
+    def log_in(self, user_name:str, pass_word:str)-> int:
         """
         checks if a user exists in users list and if they 
         do, checks their password. otherwise returns numbers
@@ -74,7 +74,7 @@ class User:
            
      
      
-    def edit_info(self,old_user:str, new_user_name:str, new_phone_num:str):
+    def edit_info(self,old_user:str, new_user_name:str, new_phone_num:str)-> bool|None:
         """
         replaces users old username and phone numbers
         with new ones.
@@ -89,7 +89,7 @@ class User:
         self.users[new_user_name] = user
         
         
-    def change_password(self,user_name:str, old_pass:str, new_pass:str):
+    def change_password(self,user_name:str, old_pass:str, new_pass:str)-> int|None:
         """
         changes user's old password with new one.
         """
@@ -103,7 +103,7 @@ class User:
       
         
     @staticmethod
-    def pass_builder(pass_word:str):
+    def pass_builder(pass_word:str)-> str:
         """
         gets a password and encodes it using salt and hashlib.
         """        
